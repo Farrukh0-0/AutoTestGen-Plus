@@ -1,0 +1,75 @@
+
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent:  #4fc3f7;
+  --bg-dark: #071525;
+  --bg-mid:  #0d2137;
+  --text:    #d0eeff;
+  --text2:   #8ab4cc;
+  --muted:   rgba(180,220,255,.45);
+  --pass:    #22c55e;
+  --fail:    #ef4444;
+  --glass:   rgba(255,255,255,.055);
+  --glass-b: rgba(255,255,255,.11);
+  --font-d: "Orbitron", sans-serif;
+  --font-b: "Rajdhani", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;600;700;900&family=Fira+Code:wght@400;500&display=swap");
+
+body {
+  background: var(--bg-dark);
+  color: var(--text);
+  font-family: var(--font-b);
+  min-height: 100vh;
+}
+
+#root { min-height: 100vh; }
+
+.app-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 18px;
+  background: linear-gradient(135deg, #071525 0%, #0d2137 50%, #060f1c 100%);
+}
+
+.app-loading__badge {
+  width: 56px; height: 56px;
+  border: 2px solid rgba(79,195,247,.72);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,22,40,.55);
+  animation: app-glow 2s ease-in-out infinite;
+}
+
+.app-loading__badge span {
+  color: var(--accent);
+  font-family: var(--font-d);
+  font-size: 11px; font-weight: 700;
+}
+
+.app-loading__title {
+  color: var(--text);
+  font-family: var(--font-d);
+  font-size: 18px; font-weight: 700;
+  letter-spacing: .05em;
+}
+
+.app-loading__spinner {
+  width: 28px; height: 28px;
+  border: 3px solid rgba(79,195,247,.18);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: app-spin .8s linear infinite;
+}
+
+@keyframes app-glow  { 0%,100%{box-shadow:0 0 10px rgba(79,195,247,.4)} 50%{box-shadow:0 0 28px rgba(79,195,247,.85)} }
+@keyframes app-spin  { to { transform: rotate(360deg); } }
+@keyframes app-fade  { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+.app-fade-in { animation: app-fade .35s ease forwards; }
